@@ -16,18 +16,9 @@
         <section id="content">
             <div class="container">
                 <div class="block-header">
-                    @if(Auth::check())
-                        <h2>@yield('title')</h2>
-                    @endif
+                    <h2>@yield('title')</h2>
                 </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        @yield('card-header')
-                    </div>
-
-                    @yield('content')
-                </div>
+                @yield('content')
             </div>
         </section>
     </section>

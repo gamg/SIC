@@ -9,7 +9,7 @@
         </li>
 
         <li class="logo hidden-xs">
-            <a href="index.html">Simple Inventory Crawler</a>
+            <a href="{{url('/')}}">Simple Inventory Crawler</a>
         </li>
 
         <li class="pull-right">

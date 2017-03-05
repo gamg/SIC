@@ -4,12 +4,12 @@
     Welcome to SIC
 @endsection
 
-@section('card-header')
-    <h2>Thumbnail <small>Extend Bootstrap's grid system with the thumbn</small></h2>
-@endsection
-
 @section('content')
-    <div class="card-body card-padding">
+    <div class="card">
+        <div class="card-header">
+            <h2>Thumbnail <small>Extend Bootstrap's grid system with the thumbn</small></h2>
+        </div>
+        <div class="card-body card-padding">
         <p class="f-500 c-black m-b-5">Custom content</p>
         <small>With a bit of extra markup, it's possible to add any kind.</small>
 
@@ -71,8 +71,9 @@
             </div>
         </div>
     </div>
+    </div>
 @endsection
 
 @section('scripts')
-    <script src="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="{{asset('vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js')}}"></script>
 @endsection

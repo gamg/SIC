@@ -1,11 +1,11 @@
 <div class="profile-menu">
     <a href="">
         <div class="profile-pic">
-            <img src="img/profile-pics/1.jpg" alt="">
+            <img src="{{asset('img/profile-pics/'.Auth::user()->avatar)}}" alt="">
         </div>
 
         <div class="profile-info">
-            Malinda Hollaway
+            Malinda Hollaway | Click here for more
 
             <i class="zmdi zmdi-arrow-drop-down"></i>
         </div>
@@ -13,16 +13,18 @@
 
     <ul class="main-menu">
         <li>
-            <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+            <a href="{{route('profiles.index')}}"><i class="fa fa-user"></i> My Profile</a>
         </li>
         <li>
-            <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+            <a href="#"><i class="fa fa-list"></i> Wish List</a>
         </li>
+        @if(Auth::user()->type == 1)
+            <li>
+                <a href="#"><i class="fa fa-dashboard"></i> Go to Dashboard</a>
+            </li>
+        @endif
         <li>
-            <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
-        </li>
-        <li>
-            <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+            <a href="#"><i class="fa fa-close"></i> Logout</a>
         </li>
     </ul>
 </div>

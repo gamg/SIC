@@ -12,7 +12,7 @@
                     from: 'top',
                     align: 'right'
                 },
-                delay: 2500,
+                delay: 3500,
                 animate: {
                     enter: 'animated bounceIn',
                     exit: 'animated bounceOut'

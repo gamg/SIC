@@ -8,11 +8,14 @@ Auth::routes();
 
 Route::get('/', 'Frontend\HomeController@index');
 
-Route::group(['namespace' => 'Frontend', 'middleware' => ['auth']], function(){
+Route::group(['namespace' => 'Frontend', 'middleware' => 'auth'], function(){
+    /* Routes for profile */
     Route::get('my-profile', 'ProfilesController@getIndex')->name('profiles.index');
     Route::post('my-profile', 'ProfilesController@postSave')->name('profiles.save');
-});
 
-Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'adminUser']], function(){
-
+    /* Routes for products crawler */
+    Route::get('expensive-products', 'ProductsCrawlerController@getExpensiveProducts')
+        ->name('crawler.expensive');
+    Route::get('cheapest-products', 'ProductsCrawlerController@getCheapestProducts')
+        ->name('crawler.cheapest');
 });

@@ -75,5 +75,6 @@
 @endsection
 
 @section('scripts')
+    @include('partials.growl-message')
     <script src="{{asset('vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js')}}"></script>
 @endsection

@@ -6,20 +6,24 @@ trait Scraper
 {
     protected $client, $crawler, $data, $message;
 
-    protected function scrape($url = null)
+    protected function scrape($url)
     {
+        if(cache()->has($this->productType)){
+            $this->data = cache()->get($this->productType);
+            return true;
+        }
+
         if($this->verifyHost($url)){
             if($this->getResponseStatus() == 200){
                 if ($this->productsCount()) {
                     $this->data = $this->filterProducts($this->crawler);
-                    //$this->storeCache();
+                    $this->storeCache();
                     return true;
                 } else {
                     $this->message = 'No products exist.';
                 }
             } else {
                 $this->message = 'An error has occurred in the connection. Try again later.';
-                ///////////// se muestra cache si existe.
             }
         } else {
             $this->message = 'Error connecting to server: '.$url;
@@ -65,6 +69,6 @@ trait Scraper
 
     protected function storeCache()
     {
-
+        cache()->put($this->productType, $this->data, 30);
     }
 }

@@ -12,6 +12,8 @@ class ProductsCrawlerController extends Controller
 {
     use Scraper;
 
+    protected $productType = 'expensive_products';
+
     public function __construct()
     {
         $this->client = new Client();
@@ -19,20 +21,18 @@ class ProductsCrawlerController extends Controller
 
     public function getExpensiveProducts()
     {
-        if($this->scrape('https://www.appliancesdelivered.ie/search?sort=price_desc'))
-            return view('frontend.home')->with('data', $this->data); // en otra vista frontend.products
-
-        Session::flash('message', [
-            'alert' => 'danger',
-            'text' => $this->message
-        ]);
-
-        return view('frontend.home'); // en otra vista frontend.products
+        return $this->crawlPage('https://www.appliancesdelivered.ie/search?sort=price_desc');
     }
 
     public function getCheapestProducts()
     {
-        if($this->scrape('https://www.appliancesdelivered.ie/search'))
+        $this->productType = 'cheapest_products';
+        return $this->crawlPage('https://www.appliancesdelivered.ie/search');
+    }
+
+    private function crawlPage($url)
+    {
+        if($this->scrape($url))
             return view('frontend.home')->with('data', $this->data); // en otra vista frontend.products
 
         Session::flash('message', [

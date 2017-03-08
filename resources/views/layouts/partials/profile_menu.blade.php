@@ -5,9 +5,9 @@
         </div>
 
         <div class="profile-info">
-            Malinda Hollaway | Click here for more
+            <strong>¡ {{Auth::user()->name}} CLICK HERE !</strong>
 
-            <i class="zmdi zmdi-arrow-drop-down"></i>
+            <i class="fa fa-arrow-down"></i>
         </div>
     </a>
 
@@ -16,15 +16,15 @@
             <a href="{{route('profiles.index')}}"><i class="fa fa-user"></i> My Profile</a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-list"></i> Wish List</a>
+            <a href="{{route('wishlist.index')}}"><i class="fa fa-list"></i> Wishlist</a>
         </li>
-        @if(Auth::user()->type == 1)
-            <li>
-                <a href="#"><i class="fa fa-dashboard"></i> Go to Dashboard</a>
-            </li>
-        @endif
         <li>
-            <a href="#"><i class="fa fa-close"></i> Logout</a>
+            <a href="#" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <i class="fa fa-close"></i> Logout</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
         </li>
     </ul>
 </div>

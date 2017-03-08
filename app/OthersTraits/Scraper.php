@@ -4,7 +4,8 @@ namespace App\OthersTraits;
 
 trait Scraper
 {
-    protected $client, $crawler, $data, $message;
+    protected $client, $crawler, $message;
+    protected $data = null;
 
     protected function scrape($url)
     {
@@ -38,7 +39,7 @@ trait Scraper
         for ($i = 0; $i < 10; $i++){
             $product = $crawler->filter('.search-results-product')->eq($i);
             $data[] = [
-                'name' => $product->filter('.product-description h4 a')->text(),
+                'name' => trim($product->filter('.product-description h4 a')->text()),
                 'product_url' => $product->filter('.product-description h4 a')->attr('href'),
                 'price' => $product->filter('h3.section-title')->text(),
                 'image_url' => $product->filter('.img-responsive')->attr('src')

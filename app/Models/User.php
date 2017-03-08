@@ -33,4 +33,12 @@ class User extends Authenticatable
             $this->attributes['password'] = \Hash::make($value);
         }
     }
+
+    /**
+     * Get the wishlist products for the user.
+     */
+    public function wishlistProducts()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 }

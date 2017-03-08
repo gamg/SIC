@@ -18,4 +18,12 @@ Route::group(['namespace' => 'Frontend', 'middleware' => 'auth'], function(){
         ->name('crawler.expensive');
     Route::get('cheapest-products', 'ProductsCrawlerController@getCheapestProducts')
         ->name('crawler.cheapest');
+
+    /* Routes for wishlist products */
+    Route::get('wishlist', 'WishlistController@getProducts')
+        ->name('wishlist.index');
+    Route::post('wishlist/add', 'WishlistController@postAddProduct')
+        ->name('wishlist.add');
+    Route::post('wishlist/delete', 'WishlistController@postDeleteProduct')
+        ->name('wishlist.delete');
 });

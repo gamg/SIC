@@ -13,6 +13,7 @@ class ProductsCrawlerController extends Controller
     use Scraper;
 
     protected $productType = 'expensive_products';
+    protected  $title = 'Top 10 most expensive products';
 
     public function __construct()
     {
@@ -27,19 +28,20 @@ class ProductsCrawlerController extends Controller
     public function getCheapestProducts()
     {
         $this->productType = 'cheapest_products';
+        $this->title = 'Top 10 most cheapest products';
         return $this->crawlPage('https://www.appliancesdelivered.ie/search');
     }
 
     private function crawlPage($url)
     {
-        if($this->scrape($url))
-            return view('frontend.home')->with('data', $this->data); // en otra vista frontend.products
+        if(!$this->scrape($url)){
+            Session::flash('message', [
+                'alert' => 'danger',
+                'text' => $this->message
+            ]);
+        }
 
-        Session::flash('message', [
-            'alert' => 'danger',
-            'text' => $this->message
-        ]);
-
-        return view('frontend.home'); // en otra vista frontend.products
+        return view('frontend.products.index')->with('data', $this->data)
+            ->with('title', $this->title);
     }
 }

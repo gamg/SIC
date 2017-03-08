@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('title')
-    SIC - Reset Password
+    SIC - Update Password
 @endsection
 
 @section('content')

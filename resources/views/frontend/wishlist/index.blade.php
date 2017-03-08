@@ -9,9 +9,9 @@
         <div class="card-header">
             <h2>My wishlist products</h2>
         </div>
-
-        <div class="table-responsive">
-            <table class="table table-hover">
+        @if($favorites->count())
+            <div class="table-responsive">
+                <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Product Name</th>
@@ -25,19 +25,25 @@
                         <td>
                             <a href="{{ $favorite->product_url }}"
                                class="btn btn-sm btn-primary" role="button"
-                               title="Go to Product" target="_blank">
+                               title="Go to Product" target="_blank"
+                               data-toggle="tooltip">
                                 <i class="fa fa-eye"></i></a>
                             <a href="#"
                                class="btn btn-sm btn-danger delete" role="button"
                                title="Delete" target="_blank" data-id="{{$favorite->id}}"
-                               data-name="{{$favorite->name}}">
+                               data-name="{{$favorite->name}}" data-toggle="tooltip">
                                 <i class="fa fa-close"></i></a>
                         </td>
                     </tr>
                  @endforeach
                 </tbody>
             </table>
-        </div>
+            </div>
+        @else
+            <div class="card-body card-padding">
+                <h4>Your wish list is empty =(</h4>
+            </div>
+        @endif
         @include('frontend.wishlist.form')
     </div>
 @endsection

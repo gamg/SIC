@@ -22,12 +22,13 @@
                                     <div class="m-b-5">
                                         <a href="{{ $product['product_url'] }}"
                                            class="btn btn-sm btn-primary" role="button"
-                                           title="Go to Product" target="_blank">
+                                           title="Go to Product" target="_blank" data-toggle="tooltip">
                                             <i class="fa fa-eye"></i></a>
                                         <a href="#" class="btn btn-sm btn-success add-wishlist"
                                            role="button" title="Add to Wishlist"
                                            data-name="{{$product['name']}}"
-                                           data-url="{{$product['product_url']}}">
+                                           data-url="{{$product['product_url']}}"
+                                           data-toggle="tooltip">
                                             <i class="fa fa-plus"></i></a>
                                     </div>
                                 </div>

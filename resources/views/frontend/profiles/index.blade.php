@@ -24,7 +24,7 @@
                     <li><i class="fa fa-phone"></i> 00971 12345678 9</li>
                     <li><i class="fa fa-envelope"></i> {{Auth::user()->email}}</li>
                     <li><i class="fa fa-facebook"></i> example.example</li>
-                    <li><i class="fa fa-twitter"></i> @gamg_ (twitter.com/gamg_)</li>
+                    <li><i class="fa fa-twitter"></i> @example (twitter.com/example)</li>
                     <li>
                         <i class="fa fa-building"></i>
                         <address class="m-b-0">

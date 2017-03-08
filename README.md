@@ -1,4 +1,4 @@
-# sic
+# SIC: Simple Inventory Crawler
 Steps to install:
 
 1- After cloning the project, apply the command "composer update", to download dependencies.
